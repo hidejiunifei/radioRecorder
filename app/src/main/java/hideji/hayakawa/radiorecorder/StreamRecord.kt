@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
+import android.os.Environment
 import android.os.IBinder
 import android.os.PowerManager
 import android.util.Log
@@ -145,7 +146,8 @@ class StreamRecord : Service() {
                 try {
                     val inputStream: InputStream =
                             URL("https://sc4s.cdn.upx.com:8036/stream.mp3").openStream()
-                    var filename = "${applicationContext.getExternalFilesDir("").absolutePath}/" +
+
+                    var filename = "${Environment.getExternalStorageDirectory().path}/jovempan/" +
                             "${currentDateTime.year}-${currentDateTime.monthValue}-${currentDateTime.dayOfMonth}-" +
                             "${currentDateTime.hour}.mp3"
                     val outputSource = File(filename)
